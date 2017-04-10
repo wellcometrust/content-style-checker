@@ -1,0 +1,27 @@
+{
+  "name": "wellcome-content-style-checker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wellcometrust/content-style-checker.git"
+  },
+  "author": "Jakub Fiala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wellcometrust/content-style-checker/issues"
+  },
+  "homepage": "https://github.com/wellcometrust/content-style-checker#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "dictionary-en-gb": "^1.2.0",
+    "express": "^4.15.2",
+    "retext": "^5.0.0",
+    "retext-english": "^3.0.0",
+    "retext-spell": "^2.2.0"
+  }
+}
