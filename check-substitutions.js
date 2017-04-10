@@ -13,8 +13,6 @@ const checkSubstitutions = file => node => {
   const word = toString(node).toLowerCase();
   const sub = substitutions.find(s => s.from === word);
 
-  console.log(substitutions, word);
-
   if (sub) {
     const message = file.warn(
       `Word choice`,
