@@ -1,23 +1,18 @@
 const visit = require('unist-util-visit');
+const checkSubstitutions = require('./check-substitutions.js');
 const toString = require('nlcst-to-string');
 
-const forbiddenWords = require('./forbidden-words.json');
+const wordVisitor = file => node => {
+  checkSubstitutions(file)(node);
+};
 
-const visitor = file => node => {
-  const word = toString(node);
-
-  if (forbiddenWords.includes(word)) {
-    const message = file.warn(
-      `Forbidden word`,
-      { start: node.position.start, end: node.position.end }
-    );
-
-    message.reason = `Using the word '${word}'`;
-  }
+const sentenceVisitor = file => node => {
+  const sentence = toString(node);
+  visit(node, 'WordNode', wordVisitor(file));
 };
 
 const transformer = (tree, file) => {
-  visit(tree, 'WordNode', visitor(file));
+  visit(tree, 'SentenceNode', sentenceVisitor(file));
 };
 
 module.exports = () => transformer;
