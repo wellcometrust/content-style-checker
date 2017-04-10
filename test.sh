@@ -1,5 +1,5 @@
 curl -i \
     -H "Content-Type: application/json" \
     -X POST -d '{"text": "Darth Vader is the father of Luke Skywalker."}' \
-    http://localhost:3333/check
+    https://guarded-tor-39875.herokuapp.com/check
 echo '\n'

@@ -7,9 +7,8 @@ const wellcomeContent = require('./retext-wellcome.js');
 const processor = retext()
 .use(wellcomeContent);
 
-const EXPRESS_PORT = 3333;
-
 const app = express();
+app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
 
 app.post('/check', (req, res) => {
@@ -19,6 +18,6 @@ app.post('/check', (req, res) => {
   });
 });
 
-app.listen(EXPRESS_PORT, function () {
-  console.log(`Serving on port ${EXPRESS_PORT}!`);
+app.listen(app.get('port'), function () {
+  console.log(`Serving on port ${app.get('port')}!`);
 });
