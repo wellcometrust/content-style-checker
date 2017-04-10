@@ -1,11 +1,11 @@
 const retext = require('retext');
-const spell = require('retext-spell');
-const dictionary = require('dictionary-en-gb');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const wellcomeContent = require('./retext-wellcome.js');
+
 const processor = retext()
-.use(spell, dictionary);
+.use(wellcomeContent);
 
 const EXPRESS_PORT = 3333;
 
