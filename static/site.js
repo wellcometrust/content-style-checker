@@ -9,7 +9,7 @@
   const writeMessage = output => msg => {
     const wrapper = document.createElement('li');
     wrapper.innerHTML = `
-      <strong>${msg.message}</strong><br />
+      <h3>${msg.message}</h3><br />
       ${msg.reason}
       <em> (${msg.source || ''})</em><br />
       \n
@@ -18,6 +18,7 @@
   };
 
   const checkText = async (input, output) => {
+    if (input.value === '') return output.innerText = 'Gimme some text, my friend.';
 
     const data = JSON.stringify({ title: '', body: `<div>${input.value}</div>` });
 
@@ -25,8 +26,6 @@
 
     const response = await fetch('/check', { method: 'post', body: data, headers });
     const messages = await response.json();
-
-    console.log(messages)
 
     output.innerHTML = '';
     if (messages.length) {
