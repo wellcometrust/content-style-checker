@@ -3,6 +3,9 @@
   const output = document.getElementById('check-text-output');
   const button = document.getElementById('check-text-btn');
 
+  const chuck = new Image();
+  chuck.src = 'https://media.giphy.com/media/2dJ5Iait4QrW8/giphy.gif';
+
   const writeMessage = output => msg => {
     output.innerText += `${msg.message}\n${msg.reason}\n\n`;
   };
@@ -18,8 +21,12 @@
 
     console.log(messages)
 
-    output.innerText = '';
-    if (messages instanceof Array) messages.forEach(writeMessage(output));
+    output.innerHTML = '';
+    if (messages.length) {
+      messages.forEach(writeMessage(output));
+    } else {
+      output.appendChild(chuck);
+    }
   };
 
   button.addEventListener('click', e => e.preventDefault() ^ checkText(input, output));
