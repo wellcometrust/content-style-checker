@@ -13,13 +13,11 @@ const transformer = (tree, file) => {
   if (tree.type === 'RootNode') {
     // the tree is not a HTML tree
     visit(tree, 'SentenceNode', sentenceVisitor(file));
-  }
-  else {
+  } else {
     // for some reason rehype2retext duplicates the last ParagraphNode
     // hacky hack
     tree.children.slice(0,-1).forEach(c => visit(c, 'SentenceNode', sentenceVisitor(file)))
   }
-
 };
 
 module.exports = () => transformer;

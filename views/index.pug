@@ -1,0 +1,25 @@
+html(class='enhanced')
+  head
+    meta(charset='utf8')
+    title Wellcome Content Style Checker
+    link(rel='stylesheet', href='/site.css', type='text/css')
+    link(rel='stylesheet', href='/specific.css', type='text/css')
+    script(defer, src='/site.js')
+  body
+    div(class='wt-grid-full', style='height: 5em;')
+    div(class='wt-grid-main wt-grid-content-main')
+      div(class='wt-grid-left wt-grid-section-left')
+      div(class='wt-grid-center wt-grid-section-center')
+        h1 Wellcome Content Style Checker
+        p Use this tool to check your text against the #[a(href='https://wellcometruststyleguide.wordpress.com/')] Wellcome Content Style guide
+        p
+        form(class='form')
+          div(class='form-item')
+            textarea(id='check-text-input')
+            button(id='check-text-btn') Run the check
+        div(class='code-container')
+          code(id='check-text-output')
+
+      div(class='wt-grid-right wt-grid-section-right')
+
+

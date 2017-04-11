@@ -22,6 +22,7 @@ const processor = (req, res) => {
       console.log('processed title');
       bodyProcessor.process(req.body.body, (err, file) => {
         if (err) {
+          console.log(err);
           res.status(500).send('500: Internal server error.' + err);
         } else {
           console.log('processed body');
