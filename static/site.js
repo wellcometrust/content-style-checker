@@ -7,7 +7,14 @@
   chuck.src = 'https://media.giphy.com/media/2dJ5Iait4QrW8/giphy.gif';
 
   const writeMessage = output => msg => {
-    output.innerText += `${msg.message}\n${msg.reason}\n\n`;
+    const wrapper = document.createElement('li');
+    wrapper.innerHTML = `
+      <strong>${msg.message}</strong><br />
+      ${msg.reason}
+      <em> (${msg.source || ''})</em><br />
+      \n
+    `;
+    output.appendChild(wrapper);
   };
 
   const checkText = async (input, output) => {

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const toString = require('nlcst-to-string');
+const createWarningContext = require('./create-warning-context.js');
 
 const substitutions = fs.readFileSync('./rules/substitutions.csv', 'utf8')
   .split('\n')
@@ -20,6 +21,7 @@ const checkSubstitutions = file => node => {
       { start: node.position.start, end: node.position.end }
     );
     message.reason = `Try using '${sub.to}' instead of '${sub.from}'`;
+    message.source = createWarningContext(sub.from, sentence);
   });
 }
 

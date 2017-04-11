@@ -1,5 +1,6 @@
 const fs = require('fs');
 const toString = require('nlcst-to-string');
+const createWarningContext = require('./create-warning-context.js');
 
 const avoids = fs.readFileSync('./rules/avoid.csv', 'utf8')
   .split('\n')
@@ -15,6 +16,7 @@ const checkAvoids = file => node => {
       { start: node.position.start, end: node.position.end }
     );
     message.reason = `Avoid using '${sub}'`;
+    message.source = createWarningContext(sub, sentence);
   });
 }
 
