@@ -6,7 +6,6 @@ const avoids = fs.readFileSync('./rules/avoid.csv', 'utf8')
   .filter(a => a != '');
 
 const checkAvoids = file => node => {
-  console.log(toString(node));
   const sentence = toString(node).toLowerCase();
   const avs = avoids.filter(s => sentence.includes(s));
 

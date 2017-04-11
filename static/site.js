@@ -4,7 +4,7 @@
   const button = document.getElementById('check-text-btn');
 
   const writeMessage = output => msg => {
-    output.innerText += `${msg.name}: ${msg.message} – ${msg.reason}\n\n`;
+    output.innerText += `${msg.message}\n${msg.reason}\n\n`;
   };
 
   const checkText = async (input, output) => {
@@ -15,6 +15,8 @@
 
     const response = await fetch('/check', { method: 'post', body: data, headers });
     const messages = await response.json();
+
+    console.log(messages)
 
     output.innerText = '';
     if (messages instanceof Array) messages.forEach(writeMessage(output));

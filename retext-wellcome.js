@@ -1,12 +1,14 @@
 const visit = require('unist-util-visit');
 const checkSubstitutions = require('./check-substitutions.js');
 const checkAvoids = require('./check-avoids.js');
+const checkFunctional = require('./check-functional.js');
 const toString = require('nlcst-to-string');
 
 const sentenceVisitor = file => node => {
   const sentence = toString(node);
   checkSubstitutions(file)(node);
   checkAvoids(file)(node);
+  checkFunctional(file)(node);
 };
 
 const transformer = (tree, file) => {
